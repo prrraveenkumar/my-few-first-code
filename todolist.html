@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f4f4f4;
+        }
+
+        #container {
+            width: 700px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0 0 10px 0;
+            font-weight: 800;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        #work {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            width: 100%;
+
+
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 38px;
+
+        }
+
+        #work div {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+
+            margin: 10px 0px;
+
+
+
+        }
+
+        #work div button {
+            background-color: #e53935;
+        }
+
+        #work div button:hover {
+            background-color: #c62828;
+        }
+
+
+        span {
+            width: 180px;
+            padding-left: 45px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+
+
+        <h1>Todo List</h1>
+
+        <form id="form">
+            <input type="text" id="worktoadd" placeholder="Enter Your task">
+            <input id="date" type="date">
+            <button>Add</button>
+        </form>
+        <div id="work">
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const form = document.getElementById("form");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            let todoitem = document.getElementById("worktoadd").value.trim()
+
+            console.log(todoitem)
+            let date = document.getElementById("date").value
+
+            console.log(date)
+            if (todoitem === "") {
+                alert("Please enter your task")
+                return
+            }
+            let taskdiv = document.createElement("div")
+
+            let todotoadd = document.createElement("span")
+            todotoadd.textContent = todoitem
+
+            let datetoadd = document.createElement("span")
+            datetoadd.textContent = date
+
+            let createdbutton = document.createElement("button")
+            createdbutton.textContent = "Delete"
+
+
+            createdbutton.addEventListener("click", () => taskdiv.remove())
+
+            let container = document.getElementById("work")
+
+            taskdiv.appendChild(todotoadd)
+            taskdiv.appendChild(datetoadd)
+            taskdiv.appendChild(createdbutton)
+
+            container.appendChild(taskdiv)
+
+
+            document.getElementById("worktoadd").value = ""
+            document.getElementById("date").value = ""
+        })
+
+
+
+    </script>
+
+
+</body>
+
+</html>
